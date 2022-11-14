@@ -16,10 +16,14 @@ function App() {
     setResult("")
   }
 
+  function evil(fn) {
+    return new Function('return ' + fn)();
+  }
+
   const calculate = (e) => {
     e.preventDefault()
     var calcString = result.replace(/[^-()\d/*+.]/g, '');
-    setResult(eval(calcString))
+    setResult(evil(calcString))
   }
 
   const handleChange = (e) => {
