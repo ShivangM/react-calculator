@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Footer from './components/Footer';
+/* eslint no-eval: 0 */
 
 function App() {
   const [result, setResult] = useState("")
@@ -16,14 +17,10 @@ function App() {
     setResult("")
   }
 
-  function evil(fn) {
-    return new Function('return ' + fn)();
-  }
-
   const calculate = (e) => {
     e.preventDefault()
     var calcString = result.replace(/[^-()\d/*+.]/g, '');
-    setResult(evil(calcString))
+    setResult(eval(calcString).toString())
   }
 
   const handleChange = (e) => {
