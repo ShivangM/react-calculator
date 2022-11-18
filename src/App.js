@@ -20,7 +20,7 @@ function App() {
   const calculate = (e) => {
     e.preventDefault()
     var calcString = result.replace(/[^-()\d/*+.]/g, '');
-    setResult(eval(calcString).toString())
+    setResult(eval(calcString).toPrecision(4).toString())
   }
 
   const handleChange = (e) => {
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="bg-dark-900 flex flex-col items-center justify-center h-screen w-screen">
-      <main className='rounded-lg bg-dark shadow-lg p-4'>
+      <main className='rounded-lg bg-dark mb-10 shadow-lg p-4'>
         <form className='w-full space-y-4' onSubmit={calculate}>
           <input onChange={handleChange} type="text" className='w-full py-4 px-4 tracking-widest text-xl text-right' placeholder='Type or Select...' value={result} />
           <div className="grid grid-cols-4 gap-2">
